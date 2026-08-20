@@ -1,0 +1,31 @@
+#header h1{
+text-align: center;
+}
+
+button{
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+}
+
+input{
+    border-radius: 5px;
+    height: 25px;
+    width: 170px;
+    box-shadow: 0 2px 5px black;
+}
+
+.search{
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#weather{
+    position: relative;
+    top: 40px;
+    text-align: center;
+}
