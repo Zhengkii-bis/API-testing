@@ -1,7 +1,24 @@
 const input = document.getElementById("cityInput");
 const button = document.getElementById("searchbutton");
+const searchbox = document.querySelector(".search");
+const backbutton = document.getElementById("backbutton");
+const wet = document.getElementById("weather");
+let showResult = false;
+
 
 button.addEventListener("click", searchWeather);
+backbutton.addEventListener("click", resetSearch);
+input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        if (showResult) {
+            pressAnimate(backbutton);
+            resetSearch();
+        } else {
+            pressAnimate(button);
+            searchWeather();
+        }
+    }
+});
 
 function searchWeather() {
     const city = input.value;
@@ -15,7 +32,7 @@ function searchWeather() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-
+            showResult = true;
             console.log("API RESPONSE:", data);
             if(!data.results || data.results.length === 0){
                 console.log("City not found");
@@ -40,11 +57,15 @@ function searchWeather() {
                     const coordinate = document.getElementById("coordinates");
                     const cityResult = document.getElementById("city");
                     const tempResult = document.getElementById("temperature");
-
+                    playAnimation(wet);
                     cityResult.textContent = `${city}`;
                     coordinate.textContent = `Longitude: ${longitude}, Latitude: ${latitude}`;
                     tempResult.textContent = `Temperature: ${temp}`;
                     condi.textContent = `Weather Condition: ${condition}`;
+                    
+                    searchbox.classList.add("hidden");
+                    backbutton.style.display = "inline-block";
+                    
                 })
 
 
@@ -72,4 +93,29 @@ function getConditionText(code) {
         95: "Thunderstorm"
     };
     return codes[code] || "Unknown conditions";
+}
+
+function resetSearch() {
+    // show the search bar again, hide results + back button
+    searchbox.classList.remove("hidden");
+    backbutton.style.display = "none";
+    showResult = false;
+    document.getElementById("city").textContent = "";
+    document.getElementById("temperature").textContent = "";
+    document.getElementById("condition").textContent = "";
+    document.getElementById("coordinates").textContent = "";
+
+    input.value = "";
+}
+function playAnimation(el){
+    el.classList.remove("animate");
+    void el.offsetWidth;    
+    el.classList.add("animate");
+}
+
+function pressAnimate(el){
+    el.classList.add("pressed");
+    setTimeout(() =>{
+        el.classList.remove("pressed");
+    }, 200)
 }

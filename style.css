@@ -1,13 +1,50 @@
-#header h1{
-text-align: center;
+body{
+    animation: transparent 0.6s ease-in;
+    margin: 0px;
+    padding: 0px;
+    background-color: #FCF2E5;
 }
-
-button{
+#header{
+    animation: pop 0.7s ease-in-out;
+    background-color: #524646;
+    box-shadow: 0 10px 10px grey;
     padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px black;
+    margin: 0px;
+    border-radius: 0 0 10px 10px;
+    color: #F9F0E0;
+}
+#header h2{
+    text-align: left;
+    font-size: 130%;
+    font-family: "Gill Sans", sans-serif;
 }
 
+#cityInput{
+    margin-top: 50px;
+}
+button {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: solid grey 2px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    letter-spacing: 0.3px;
+    box-shadow: 5px 4px 10px gray;
+    margin-top: 7px;
+}
+
+button:hover{
+    transform: scale(1.07);
+}
+button:active {
+    transform: scale(0.90); /* subtle "press" feedback */
+}
+.pressed{
+    transform: scale(0.90);
+}
 input{
     border-radius: 5px;
     height: 25px;
@@ -29,3 +66,45 @@ input{
     top: 40px;
     text-align: center;
 }
+
+@keyframes pop{
+    0%{
+        opacity: 0%;
+        transform: translateY(20px);
+        transition: ease-in-out;
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(1);
+        transition: ease-in-out;
+    }
+}
+
+@keyframes transparent{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+.search {
+    animation: pop 1s ease-in-out;
+}
+
+.hidden{
+    opacity: 0;
+    animation: none;
+    pointer-events: none;
+    position: absolute;
+}
+
+.animate{
+    animation: pop 0.5s ease-in-out;
+}
+
+#cityInput{
+    background-color: #F7EAE0;
+}
+ 
