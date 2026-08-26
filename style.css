@@ -119,4 +119,13 @@ button:active {
 #cityInput{
     background-color: #F7EAE0;
 }
+
+#footing{
+    position: fixed;
+    top: 700px;
+    left: 690px;
+    text-align: center;
+    font-size: 70%;
+    animation: pop 1s ease-in-out;
+}
  
