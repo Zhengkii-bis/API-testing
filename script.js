@@ -4,6 +4,7 @@ const button = document.getElementById("searchbutton");
 const searchbox = document.querySelector(".search");
 const backbutton = document.getElementById("backbutton");
 const wet = document.getElementById("weather");
+const hero = document.querySelector(".hero")
 let showResult = false;
 
 //buttons response
@@ -82,6 +83,7 @@ function searchWeather() {
                     rainResult.textContent = `Chance of Rain: ${rainchance}%`;
                     searchbox.classList.add("hidden");
                     backbutton.style.display = "inline-block";
+                    hero.classList.add("hidden");
                     
                 })
 
@@ -115,6 +117,7 @@ function getConditionText(code) {
 function resetSearch() {
     // show the search bar again, hide results + back button
     searchbox.classList.remove("hidden");
+    hero.classList.remove("hidden")
     backbutton.style.display = "none";
     showResult = false;
     document.getElementById("city").textContent = "";
